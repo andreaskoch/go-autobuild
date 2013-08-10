@@ -1,0 +1,28 @@
+{
+	"TasksAppend": [],
+	"Resources": {
+		"Include": "README.md,LICENSE",
+		"Exclude": "*.go"
+	},
+	"PackageVersion": "0.1.0",
+	"TaskSettings": {
+		"codesign": {
+			"id": "go-autobuild"
+		},
+		"downloads-page": {
+			"fileheader": "---\nlayout: default\ntitle: Download go-autobuild\n---\n\nNote: please use 'go get -u github.com/andreaskoch/go-autobuild' instead of these binaries.",
+			"filename": "download.md"
+		},
+		"pkg-build": {
+			"metadata": {
+				"description": "go-autobuild builds your go project every time a go source file has been added, modified or deleted.",
+				"maintainer": "Andreas Koch (https://github.com/andreaskoch)"
+			},
+			"metadata-deb": {
+				"Depends": "golang",
+				"Homepage": "https://github.com/andreaskoch/go-autobuild"
+			}
+		}
+	},
+	"FormatVersion": "0.1.0"
+}
