@@ -33,6 +33,10 @@ go-autobuild
 
 [![Build Status](https://travis-ci.org/andreaskoch/go-autobuild.png?branch=master)](https://travis-ci.org/andreaskoch/go-autobuild)
 
+## Change history
+
+- 2013-10-06: Please pull the latest version of andreaskoch/go-fswatch and rebuild. The go-fswatch library applied the skip-expression on folders which broke the the folder recursion (see: https://github.com/andreaskoch/go-fswatch/commit/212d924aad87e4061194f741184195a8f511a4ba).
+
 ## Contribute
 
 If you have an idea how to make this little tool better please send me a message or a pull request.
