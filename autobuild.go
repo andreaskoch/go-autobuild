@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"github.com/andreaskoch/go-fswatch"
 	"io"
+	"log"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -108,7 +109,7 @@ func build(directory string, stop chan bool) {
 
 			select {
 			case <-folderWatcher.Change:
-				debug("Buiding %q.", directory)
+				log.Printf("Buiding %q.\n", directory)
 
 				go func() {
 					execute(directory, "go install")
@@ -139,8 +140,6 @@ func execute(directory, commandText string) {
 
 	// wait for the command to finish
 	command.Wait()
-
-	fmt.Println()
 }
 
 func getCmd(directory, commandText string) *exec.Cmd {
