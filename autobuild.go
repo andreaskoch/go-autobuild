@@ -103,12 +103,13 @@ func build(directory string, stop chan bool) {
 	}
 
 	go func() {
-		folderWatcher := fswatch.NewFolderWatcher(directory, recurse, skipNonGoFiles).Start()
+		folderWatcher := fswatch.NewFolderWatcher(directory, recurse, skipNonGoFiles, 2)
+		folderWatcher.Start()
 
 		for folderWatcher.IsRunning() {
 
 			select {
-			case <-folderWatcher.Change:
+			case <-folderWatcher.Modified():
 				log.Printf("Buiding %q.\n", directory)
 
 				go func() {
@@ -119,7 +120,7 @@ func build(directory string, stop chan bool) {
 				debug("Stopping build for %q.", directory)
 				folderWatcher.Stop()
 
-			case <-folderWatcher.Stopped:
+			case <-folderWatcher.Stopped():
 				break
 			}
 		}
